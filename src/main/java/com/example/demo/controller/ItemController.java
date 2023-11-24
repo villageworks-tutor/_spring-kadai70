@@ -25,6 +25,7 @@ public class ItemController {
 	public String index(
 			@RequestParam(name = "categoryId", defaultValue = "") Integer categoryId,
 			@RequestParam(name = "keyword", defaultValue = "") String keyword,
+			@RequestParam(name = "maxPrice", defaultValue = "") Integer maxPrice,
 			Model model) {
 		// カテゴリ検索リンク用のカテゴリーリストを取得
 		List<Category> categoryList = categoryRepository.findAll();
@@ -37,11 +38,21 @@ public class ItemController {
 			// カテゴリーIDが送信された場合：カテゴリー検索で商品を取得
 			itemList = itemRepository.findByCategoryId(categoryId);
 		} else if (!keyword.isEmpty()) {
-			// 	キーワードが入力された場合：商品名のキーワード検索で商品を取得
-			itemList = itemRepository.findByNameContaining(keyword);
+			// 	キーワードが入力された場合
+			if (maxPrice != null) {
+				itemList = itemRepository.findByNameContainingAndPriceLessThanEqual(keyword, maxPrice);
+			} else {
+				itemList = itemRepository.findByNameContaining(keyword);
+			}
 		} else {
-			// カテゴリーIDが送信されない場合：すべての商品を取得
-			itemList = itemRepository.findAll();
+			// リクエストパラメータが送信されない場合
+			if (maxPrice != null) {
+				// 価格の上限金額が入力された場合
+				itemList = itemRepository.findByPriceLessThanEqual(maxPrice);
+			} else {
+				// カテゴリーID、キーワードおよび上限金額が入力されない場合
+				itemList = itemRepository.findAll();
+			}
 		}
 		// 取得した商品リストをスコープに登録
 		model.addAttribute("itemList", itemList);
