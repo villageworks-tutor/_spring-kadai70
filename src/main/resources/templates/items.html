@@ -30,7 +30,7 @@
 		</tr>
 		<tr th:each="item:${itemList}">
 			<td>[[${item.id}]]</td>
-			<td>[[${item.name}]]</td>
+			<td><a th:href="'/items/' + ${item.id}" th:text="${item.name}"></a></td>
 			<td>[[${item.price}]]</td>
 			<td>
 				<form action="" method="">
