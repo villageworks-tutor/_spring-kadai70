@@ -56,6 +56,8 @@ public class ItemController {
 		}
 		// 取得した商品リストをスコープに登録
 		model.addAttribute("itemList", itemList);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("maxPrice", maxPrice);
 		// 画面遷移
 		return "items";
 	}
