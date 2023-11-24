@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+/* 全体 */
+body {
+	background-color: #EFF0F7; /* 背景色 */
+	text-align: center; /* 中央寄せ */
+	min-width: 900px; /* 最小幅 */
+}
+/* ヘッダー、ナビゲーションメニュー、フッター */
+header, nav, footer {
+	background-color: #45496A; /* 背景色 */
+	color: #FFFFFF; /* 文字色 */
+	padding-top: 10px; /* 内側余白（上） */
+	padding-bottom: 10px; /* 内側余白（下） */ 
+}
+/* ヘッダー内リンク、ナビゲーション内リンク */
+header a, nav a {
+	color: #FFFFFF;
+}
+nav  a {
+	margin-right: 10px;
+}
+/* 仕切り線 */
+hr {
+	border-top: 2px dashed #7D8BAE;
+}
+/* メイン */
+main {
+	background-color: #FFFFFF;
+	min-height: 50px;
+	padding: 20px;
+}
+/* 表 */
+table {
+	margin: 3px auto;
+	min-width: 800px;
+	border: none #7D8BAE;
+	padding: 10px;
+}
+/* 表見出しセル */
+table th {
+	background-color: #7D8BAE;
+	color: #FFFFFF;
+}
+/* 表セル */
+table td {
+	background-color: white;
+}
+/* 送信ボタン */
+button {
+	margin: 5px;
+	padding: 10px 20px;
+	background-color: #E5857B;
+	color: #FFFFFF;
+	border: none;
+	width: 150px;
+	cursor: pointer;
+}
+/* 送信ボタン（マウスオーバー時） */
+button:hover {
+	background-color: #F1B2B2;
+}
