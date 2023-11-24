@@ -11,25 +11,22 @@
 	<hr />
 	<!-- ナビゲーション領域の表示 -->
 	<th:block th:replace="~{parts/navi}"></th:block>
-	<!-- 商品一覧表示領域 -->
-	<table th:if="${itemList}">
+	<!-- 商品詳細表示領域 -->
+	<table th:if="${item}">
 		<tr>
 			<th>NO</th>
-			<th>商品名</th>
-			<th>値段</th>
-			<th></th>
-		</tr>
-		<tr th:each="item:${itemList}">
 			<td>[[${item.id}]]</td>
-			<td><a th:href="'/items/' + ${item.id}" th:text="${item.name}"></a></td>
+		</tr>
+		<tr>
+			<th>商品名</th>
+			<td>[[${item.name}]]</td>
+		</tr>
+		<tr>
+			<th>値段</th>
 			<td>[[${item.price}]]</td>
-			<td>
-				<form action="" method="">
-					<button>カートに追加</button>
-				</form>
-			</td>
 		</tr>
 	</table>
+	<button>カートに追加</button>
 	<hr />
 	<!-- フッタ領域の表示 -->
 	<th:block th:replace="~{parts/footer}"></th:block>
